@@ -1,0 +1,42 @@
+﻿@page
+@model library_dbms.Pages.Departments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Department[0].DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department[0].PhoneNum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Department) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNum)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.DepartmentNum">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.DepartmentNum">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.DepartmentNum">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

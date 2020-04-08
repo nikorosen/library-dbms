@@ -1,0 +1,70 @@
+﻿@page
+@model library_dbms.Pages.Assets.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Asset</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Asset.AssetId" />
+            <div class="form-group">
+                <label asp-for="Asset.Category" class="control-label"></label>
+                <input asp-for="Asset.Category" class="form-control" />
+                <span asp-validation-for="Asset.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Asset.BarcodeNum" class="control-label"></label>
+                <input asp-for="Asset.BarcodeNum" class="form-control" />
+                <span asp-validation-for="Asset.BarcodeNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Asset.Manufacturer" class="control-label"></label>
+                <input asp-for="Asset.Manufacturer" class="form-control" />
+                <span asp-validation-for="Asset.Manufacturer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Asset.ModelNum" class="control-label"></label>
+                <input asp-for="Asset.ModelNum" class="form-control" />
+                <span asp-validation-for="Asset.ModelNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Asset.Name" class="control-label"></label>
+                <input asp-for="Asset.Name" class="form-control" />
+                <span asp-validation-for="Asset.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Asset.Notes" class="control-label"></label>
+                <input asp-for="Asset.Notes" class="form-control" />
+                <span asp-validation-for="Asset.Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Asset.Status" class="control-label"></label>
+                <input asp-for="Asset.Status" class="form-control" />
+                <span asp-validation-for="Asset.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Asset.SerialNum" class="control-label"></label>
+                <input asp-for="Asset.SerialNum" class="form-control" />
+                <span asp-validation-for="Asset.SerialNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
