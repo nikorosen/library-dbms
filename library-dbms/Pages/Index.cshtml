@@ -4,7 +4,66 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <style>
+        .menu-button {
+            height: 75px;
+            width: 250px;
+            background-color: #c0231b;
+            border: none;
+            color: white;
+            padding: 20px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        a.menu-button:hover {
+            background-color: #ef2d24;
+            color: white;
+        }
+    </style>
+
+    <div align="center">
+        
+
+        <br />
+        <h1>Welcome!</h1>
+        <p>Please select a table to view or edit</p>
+        <br />
+        <table align="center">
+            <tr>
+                <td><a href="Assets/Index" class="menu-button"> Assets </a></td>
+                <td><a href="AssetLocations/Index" class="menu-button"> Asset Locations </a></td>
+            </tr>
+            <tr>
+                <td><a href="Employees/Index" class="menu-button"> Employees </a></td>
+                <td><a href="EmployeeLocations/Index" class="menu-button"> Employee Locations </a></td>
+            </tr>
+
+            <tr>
+                <td><a href="Departments/Index" class="menu-button"> Departments </a></td>
+                <td><a href="DepartmentLocations/Index" class="menu-button"> Department Locations </a></td>
+            </tr>
+
+            <tr>
+                <td><a href="Vendors/Index" class="menu-button"> Vendors </a></td>
+                <td><a href="SalesReps/Index" class="menu-button"> Sales Representatives </a></td>
+            </tr>
+            <tr>
+                <td><a href="AssignedToEmps/Index" class="menu-button"> Assigned to Employeee </a></td>
+                <td><a href="AssignedToDeps/Index" class="menu-button"> Assigned to Department </a></td>
+            </tr>
+
+            <tr>
+                <td><a href="LtsStaffs/Index" class="menu-button"> LTS Staff </a></td>
+                <td><a href="MaintenanceLogs/Index" class="menu-button"> Maintenance Logs </a></td>
+            </tr>
+            <tr>
+                <td><a href="PerformedBys/Index" class="menu-button"> Performed By </a></td>
+                <td><a href="SuppliedBys/Index" class="menu-button"> Supplied By </a></td>
+            </tr>
+
+        </table>
+    </div>

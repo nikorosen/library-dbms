@@ -1,0 +1,43 @@
+﻿@page
+@model library_dbms.Pages.AssetLocations.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AssetLocation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssetLocation.BuildingNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssetLocation.BuildingNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssetLocation.RoomNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssetLocation.RoomNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssetLocation.Notes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssetLocation.Notes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssetLocation.Asset)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssetLocation.Asset.AssetId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.AssetLocation.AssetId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

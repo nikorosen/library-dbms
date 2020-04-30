@@ -15,7 +15,10 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Asset.Category" class="control-label"></label>
-                <input asp-for="Asset.Category" class="form-control" />
+                <br />
+                <select id="categories" asp-for="Asset.Category" asp-items="Model.Categories">
+                    <option value=""></option>
+                </select>
                 <span asp-validation-for="Asset.Category" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -25,7 +28,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Asset.Manufacturer" class="control-label"></label>
-                <input asp-for="Asset.Manufacturer" class="form-control" />
+                <br />
+                <select id="manufacturer" asp-for="Asset.Manufacturer" asp-items="Model.Manufacturers">
+                    <option value=""></option>
+                </select>
                 <span asp-validation-for="Asset.Manufacturer" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,15 +50,35 @@
                 <span asp-validation-for="Asset.Notes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Asset.Status" class="control-label"></label>
-                <input asp-for="Asset.Status" class="form-control" />
-                <span asp-validation-for="Asset.Status" class="text-danger"></span>
+                <label asp-for="Asset.AssetStatus" class="control-label"></label>
+                <br />
+                <select id="status" asp-for="Asset.AssetStatus" asp-items="Model.Statuses">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="Asset.AssetStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Asset.SerialNum" class="control-label"></label>
                 <input asp-for="Asset.SerialNum" class="form-control" />
                 <span asp-validation-for="Asset.SerialNum" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="AssetLocation.BuildingNum" class="control-label"></label>
+                <input asp-for="AssetLocation.BuildingNum" class="form-control" />
+                <span asp-validation-for="AssetLocation.BuildingNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssetLocation.RoomNum" class="control-label"></label>
+                <input asp-for="AssetLocation.RoomNum" class="form-control" />
+                <span asp-validation-for="AssetLocation.RoomNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssetLocation.Notes" class="control-label"></label>
+                <input asp-for="AssetLocation.Notes" class="form-control" />
+                <span asp-validation-for="AssetLocation.Notes" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

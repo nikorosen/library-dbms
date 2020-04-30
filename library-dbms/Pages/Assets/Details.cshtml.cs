@@ -27,7 +27,12 @@ namespace library_dbms.Pages.Assets
                 return NotFound();
             }
 
-            Asset = await _context.Asset.FirstOrDefaultAsync(m => m.AssetId == id);
+            Asset = await _context.Asset
+                .Include(u => u.AssetLocation)
+                .Include(u => u.AssignedToEmp)
+                .Include(u => u.AssignedToEmp.Employee)
+                .Include(u => u.AssignedToDep)
+                .FirstOrDefaultAsync(m => m.AssetId == id);
 
             if (Asset == null)
             {

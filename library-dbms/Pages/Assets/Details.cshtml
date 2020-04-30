@@ -12,6 +12,12 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Asset.AssetId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Asset.AssetId)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Asset.Category)
         </dt>
         <dd class="col-sm-10">
@@ -48,10 +54,10 @@
             @Html.DisplayFor(model => model.Asset.Notes)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Asset.Status)
+            @Html.DisplayNameFor(model => model.Asset.AssetStatus)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Asset.Status)
+            @Html.DisplayFor(model => model.Asset.AssetStatus)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Asset.SerialNum)
@@ -59,7 +65,32 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Asset.SerialNum)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Asset.AssetLocation.BuildingNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Asset.AssetLocation.BuildingNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Asset.AssetLocation.RoomNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Asset.AssetLocation.RoomNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Asset.AssignedToEmp.Employee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Asset.AssignedToEmp.Employee.FirstName) @Html.DisplayFor(model => model.Asset.AssignedToEmp.Employee.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Asset.AssignedToDep.DepartmentNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Asset.AssignedToDep.DepartmentNum)
+        </dd>
     </dl>
+
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Asset.AssetId">Edit</a> |

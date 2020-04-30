@@ -19,11 +19,20 @@ namespace library_dbms.Pages.MaintenanceLogs
         }
 
         public IList<MaintenanceLog> MaintenanceLog { get;set; }
+        
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
 
         public async Task OnGetAsync()
         {
-            MaintenanceLog = await _context.MaintenanceLog
-                .Include(m => m.Asset).ToListAsync();
+            var maintenanceLogs = from a in _context.MaintenanceLog.Include(u => u.Asset) select a;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                maintenanceLogs = maintenanceLogs.Where(x => x.AssetId == Int32.Parse(SearchString));
+            }
+
+            MaintenanceLog = await maintenanceLogs.ToListAsync();
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@page
+@model library_dbms.Pages.LtsStaffs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>LtsStaff</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LtsStaff.EmployeeId" />
+            <div class="form-group">
+                <label asp-for="LtsStaff.LaborCost" class="control-label"></label>
+                <input asp-for="LtsStaff.LaborCost" class="form-control" />
+                <span asp-validation-for="LtsStaff.LaborCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

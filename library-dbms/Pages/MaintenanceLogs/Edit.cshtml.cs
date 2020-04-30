@@ -36,7 +36,7 @@ namespace library_dbms.Pages.MaintenanceLogs
             {
                 return NotFound();
             }
-           ViewData["AssetId"] = new SelectList(_context.Asset, "AssetId", "Category");
+           ViewData["AssetId"] = new SelectList(_context.Asset, "AssetId", "AssetId");
             return Page();
         }
 

@@ -1,0 +1,42 @@
+﻿@page
+@model library_dbms.Pages.LtsStaffs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LtsStaff[0].LaborCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LtsStaff[0].Employee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.LtsStaff) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LaborCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FirstName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.EmployeeId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.EmployeeId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.EmployeeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

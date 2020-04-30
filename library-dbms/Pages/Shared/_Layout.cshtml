@@ -1,31 +1,50 @@
 ﻿<!DOCTYPE html>
+<style>
+    .logo {
+        width: 5%;
+        height: 5%;
+    }
+</style>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - library_dbms</title>
+    <title>@ViewData["Title"] - LTS Inventory</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
+
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">library_dbms</a>
+            
+                <a class="navbar-brand" asp-area="" asp-page="/Index" padding="">LTS Inventory Management Interface</a>
+                <img src="~/images/uh-hilo-logo.svg" class="logo" />
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <!-- <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Assets/Index">Assets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Vendors/Index">Vendors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Employees/Index">Employees</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/MaintenanceLogs/Index">Maintenance Logs</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
+
+
             </div>
         </nav>
     </header>
@@ -37,7 +56,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - library_dbms - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2020 - LTS Inventory Management System - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 

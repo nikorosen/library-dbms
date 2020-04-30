@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace library_dbms.Models
 {
@@ -7,10 +8,9 @@ namespace library_dbms.Models
     {
         public int VendorId { get; set; }
         public int AssetId { get; set; }
-        public double PurchasePrice { get; set; }
-        public DateTime PurchaseDate { get; set; }
-
-        public virtual Asset Asset { get; set; }
-        public virtual Vendor Vendor { get; set; }
+        [DisplayName("Purchase Price")]
+        public decimal? PurchasePrice { get; set; }
+        [DisplayName("Purchase Date")]
+        public DateTime? PurchaseDate { get; set; }
     }
 }

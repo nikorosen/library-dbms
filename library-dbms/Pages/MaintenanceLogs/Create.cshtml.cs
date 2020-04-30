@@ -20,7 +20,7 @@ namespace library_dbms.Pages.MaintenanceLogs
 
         public IActionResult OnGet()
         {
-        ViewData["AssetId"] = new SelectList(_context.Asset, "AssetId", "Category");
+        ViewData["AssetId"] = new SelectList(_context.Asset, "AssetId", "AssetId");
             return Page();
         }
 

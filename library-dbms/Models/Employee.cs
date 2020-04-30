@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace library_dbms.Models
 {
@@ -8,18 +9,23 @@ namespace library_dbms.Models
         public Employee()
         {
             AssignedToEmp = new HashSet<AssignedToEmp>();
+            EmployeeLocation = new HashSet<EmployeeLocation>();
         }
 
         public int EmployeeId { get; set; }
-        public int DepartmentNum { get; set; }
+        [DisplayName("Departmnet #")]
+        public int? DepartmentNum { get; set; }
         public string Email { get; set; }
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
+        [DisplayName("Phone #")]
         public string PhoneNum { get; set; }
-
+        [DisplayName("Department Name")]
         public virtual Department DepartmentNumNavigation { get; set; }
-        public virtual EmployeeLocation EmployeeLocation { get; set; }
         public virtual LtsStaff LtsStaff { get; set; }
         public virtual ICollection<AssignedToEmp> AssignedToEmp { get; set; }
+        public virtual ICollection<EmployeeLocation> EmployeeLocation { get; set; }
     }
 }
