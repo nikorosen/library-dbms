@@ -13,7 +13,7 @@ namespace library_dbms.Models
             Employee = new HashSet<Employee>();
         }
 
-        [DisplayName("Department #")]
+        [DisplayName("Department Num")]
         public int DepartmentNum { get; set; }
         [DisplayName("Department Name")]
         public string DepartmentName { get; set; }

@@ -23,7 +23,7 @@ namespace library_dbms.Pages.PerformedBys
         public async Task OnGetAsync()
         {
             PerformedBy = await _context.PerformedBy
-                .Include(p => p.Log).ToListAsync();
+                .Include(u => u.Log).ToListAsync();
         }
     }
 }

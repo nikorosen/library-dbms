@@ -7,9 +7,9 @@ namespace library_dbms.Models
     public partial class AssetLocation
     {
         public int AssetId { get; set; }
-        [DisplayName("Building #")]
+        [DisplayName("Building Num")]
         public string BuildingNum { get; set; }
-        [DisplayName("Room #")]
+        [DisplayName("Room Num")]
         public string RoomNum { get; set; }
         public string Notes { get; set; }
 

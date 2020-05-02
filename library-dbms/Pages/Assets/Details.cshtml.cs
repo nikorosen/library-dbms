@@ -32,6 +32,7 @@ namespace library_dbms.Pages.Assets
                 .Include(u => u.AssignedToEmp)
                 .Include(u => u.AssignedToEmp.Employee)
                 .Include(u => u.AssignedToDep)
+                .Include(u => u.AssignedToDep.DepartmentNumNavigation)
                 .FirstOrDefaultAsync(m => m.AssetId == id);
 
             if (Asset == null)

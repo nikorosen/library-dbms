@@ -21,6 +21,14 @@ namespace library_dbms.Pages.Assets
 
         [BindProperty]
         public Asset Asset { get; set; }
+        [BindProperty]
+        public AssetLocation AssetLocation { get; set; }
+        [BindProperty]
+        public AssignedToDep AssignedToDep { get; set; }
+        [BindProperty]
+        public AssignedToEmp AssignedToEmp { get; set; }
+        [BindProperty]
+        public SuppliedBy SuppliedBy { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,7 +37,16 @@ namespace library_dbms.Pages.Assets
                 return NotFound();
             }
 
-            Asset = await _context.Asset.FirstOrDefaultAsync(m => m.AssetId == id);
+            ViewData["DepartmentNum"] = new SelectList(_context.Department, "DepartmentNum", "DepartmentName");
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "FirstName");
+
+            Asset = await _context.Asset
+                .Include(u => u.AssetLocation)
+                .Include(u => u.AssignedToEmp)
+                .Include(u => u.AssignedToEmp.Employee)
+                .Include(u => u.AssignedToDep)
+                .Include(u => u.AssignedToDep.DepartmentNumNavigation)
+                .FirstOrDefaultAsync(m => m.AssetId == id);
 
             if (Asset == null)
             {
@@ -47,7 +64,15 @@ namespace library_dbms.Pages.Assets
                 return Page();
             }
 
+            int assetId = Asset.AssetId;
+
+            SuppliedBy.AssetId = assetId;
+            AssetLocation.AssetId = assetId;
+            AssignedToEmp.AssetId = assetId;
+            AssignedToDep.AssetId = assetId;
+
             _context.Attach(Asset).State = EntityState.Modified;
+            
 
             try
             {
@@ -64,6 +89,36 @@ namespace library_dbms.Pages.Assets
                     throw;
                 }
             }
+
+            ///
+            // Asset editing is a WIP. Throws error when trying to update foreign key values on the same page
+            // as asset editing. I believe this is because the EntityState can't be modified before it's saved 
+            // and/or posted. For now, I've kept the editing fields in the cshtml, 
+            // but they'll only work for asset attributes
+            ///
+
+            /*
+            _context.Attach(AssetLocation).State = EntityState.Modified;
+            _context.Attach(SuppliedBy).State = EntityState.Modified;
+            _context.Attach(AssignedToDep).State = EntityState.Modified;
+            _context.Attach(AssignedToEmp).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AssetExists(Asset.AssetId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            */
 
             return RedirectToPage("./Index");
         }

@@ -5,18 +5,36 @@
     ViewData["Title"] = "Create";
 }
 
+<!-- This page, and subsequent .cs file really shouldn't be in the AssetsLocation folder, because it updates a bunch of
+different things, but it works for now... -->
+
 <h1>Create</h1>
 
-<h4>AssetLocation</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <br /><h4> Asset vendor: </h4> <br />
+
             <div class="form-group">
-                <label asp-for="AssetLocation.AssetId" class="control-label"></label>
-                <select asp-for="AssetLocation.AssetId" class ="form-control" asp-items="ViewBag.AssetId"></select>
+                <label asp-for="SuppliedBy.VendorId" class="control-label"></label>
+                <input asp-for="SuppliedBy.VendorId" class="form-control" />
+                <span asp-validation-for="SuppliedBy.VendorId" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="SuppliedBy.PurchasePrice" class="control-label"></label>
+                <input asp-for="SuppliedBy.PurchasePrice" class="form-control" />
+                <span asp-validation-for="SuppliedBy.PurchasePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SuppliedBy.PurchaseDate" class="control-label"></label>
+                <input asp-for="SuppliedBy.PurchaseDate" class="form-control" />
+                <span asp-validation-for="SuppliedBy.PurchaseDate" class="text-danger"></span>
+            </div>
+
+            <br /><h4> Asset location: </h4> <br />
+
             <div class="form-group">
                 <label asp-for="AssetLocation.BuildingNum" class="control-label"></label>
                 <input asp-for="AssetLocation.BuildingNum" class="form-control" />
@@ -32,6 +50,31 @@
                 <input asp-for="AssetLocation.Notes" class="form-control" />
                 <span asp-validation-for="AssetLocation.Notes" class="text-danger"></span>
             </div>
+
+            <br /><h4>Assign asset to an employee or department? </h4> <br />
+
+            <select id="assign-to" name="assign-to" onchange="displaySelect(this);">
+                <option value="no">No</option>
+                <option value="employee">Employee</option>
+                <option value="department">Department</option>
+            </select>
+
+            <div id="employeeSelect" style="display:none">
+                <br />
+                <div class="form-group">
+                    <select asp-for="AssignedToEmp.EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                </div>
+            </div>
+
+            <div id="departmentSelect" style="display:none">
+                <br />
+                <div class="form-group">
+                    <select asp-for="AssignedToDep.DepartmentNum" class="form-control" asp-items="ViewBag.DepartmentNum"></select>
+                </div>
+            </div>
+
+            <br /><br />
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -45,4 +88,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
 }

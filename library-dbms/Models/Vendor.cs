@@ -11,6 +11,7 @@ namespace library_dbms.Models
             SalesRep = new HashSet<SalesRep>();
         }
 
+        [DisplayName("Vendor Id")]
         public int VendorId { get; set; }
         public string Address { get; set; }
         [DisplayName("Company Name")]

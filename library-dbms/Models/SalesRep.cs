@@ -13,7 +13,7 @@ namespace library_dbms.Models
         public string FirstName { get; set; }
         [DisplayName("Last Name")]
         public string LastName { get; set; }
-        [DisplayName("Phone #")]
+        [DisplayName("Phone Num")]
         public string PhoneNum { get; set; }
         public string Ext { get; set; }
         public string Title { get; set; }

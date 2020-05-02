@@ -6,11 +6,11 @@ namespace library_dbms.Models
 {
     public partial class DepartmentLocation
     {
-        [DisplayName("Department #")]
+        [DisplayName("Department Num")]
         public int DepartmentNum { get; set; }
-        [DisplayName("Building #")]
+        [DisplayName("Building Num")]
         public string BuildingNum { get; set; }
-        [DisplayName("Room #")]
+        [DisplayName("Room Num")]
         public string RoomNum { get; set; }
         
         [DisplayName("Department Name")]

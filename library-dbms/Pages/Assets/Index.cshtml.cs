@@ -53,7 +53,7 @@ namespace library_dbms.Pages.Assets
                 .Include(u => u.AssignedToEmp) select a;
          
             if (!string.IsNullOrEmpty(SearchString))         {
-                assets = assets.Where(x => x.Manufacturer.Contains(SearchString));
+                assets = assets.Where(x => x.Name.Contains(SearchString));
             }
          
             if (!string.IsNullOrEmpty(AssetCategory))

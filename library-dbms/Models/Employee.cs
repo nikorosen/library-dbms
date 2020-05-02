@@ -13,14 +13,14 @@ namespace library_dbms.Models
         }
 
         public int EmployeeId { get; set; }
-        [DisplayName("Departmnet #")]
+        [DisplayName("Departmnet Num")]
         public int? DepartmentNum { get; set; }
         public string Email { get; set; }
         [DisplayName("First Name")]
         public string FirstName { get; set; }
         [DisplayName("Last Name")]
         public string LastName { get; set; }
-        [DisplayName("Phone #")]
+        [DisplayName("Phone Num")]
         public string PhoneNum { get; set; }
         [DisplayName("Department Name")]
         public virtual Department DepartmentNumNavigation { get; set; }

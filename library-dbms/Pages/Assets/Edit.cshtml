@@ -45,7 +45,7 @@
                 <span asp-validation-for="Asset.Notes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Asset.AssetStatus" class="control-label"></label>                                                                
+                <label asp-for="Asset.AssetStatus" class="control-label"></label>
                 <input asp-for="Asset.AssetStatus" class="form-control" />
                 <span asp-validation-for="Asset.AssetStatus" class="text-danger"></span>
             </div>
@@ -54,6 +54,65 @@
                 <input asp-for="Asset.SerialNum" class="form-control" />
                 <span asp-validation-for="Asset.SerialNum" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="SuppliedBy.VendorId" class="control-label"></label>
+                <input asp-for="SuppliedBy.VendorId" class="form-control" />
+                <span asp-validation-for="SuppliedBy.VendorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SuppliedBy.PurchasePrice" class="control-label"></label>
+                <input asp-for="SuppliedBy.PurchasePrice" class="form-control" />
+                <span asp-validation-for="SuppliedBy.PurchasePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SuppliedBy.PurchaseDate" class="control-label"></label>
+                <input asp-for="SuppliedBy.PurchaseDate" class="form-control" />
+                <span asp-validation-for="SuppliedBy.PurchaseDate" class="text-danger"></span>
+            </div>
+
+            <br /><h4> Asset location: </h4> <br />
+
+            <div class="form-group">
+                <label asp-for="AssetLocation.BuildingNum" class="control-label"></label>
+                <input asp-for="AssetLocation.BuildingNum" class="form-control" />
+                <span asp-validation-for="AssetLocation.BuildingNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssetLocation.RoomNum" class="control-label"></label>
+                <input asp-for="AssetLocation.RoomNum" class="form-control" />
+                <span asp-validation-for="AssetLocation.RoomNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssetLocation.Notes" class="control-label"></label>
+                <input asp-for="AssetLocation.Notes" class="form-control" />
+                <span asp-validation-for="AssetLocation.Notes" class="text-danger"></span>
+            </div>
+
+            <br /><h4>Update assigned employee or department? </h4> <br />
+
+            <select id="assign-to" name="assign-to" onchange="displaySelect(this);">
+                <option value="no">No</option>
+                <option value="employee">Employee</option>
+                <option value="department">Department</option>
+            </select>
+
+            <div id="employeeSelect" style="display:none">
+                <br />
+                <div class="form-group">
+                    <select asp-for="AssignedToEmp.EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                </div>
+            </div>
+
+            <div id="departmentSelect" style="display:none">
+                <br />
+                <div class="form-group">
+                    <select asp-for="AssignedToDep.DepartmentNum" class="form-control" asp-items="ViewBag.DepartmentNum"></select>
+                </div>
+            </div>
+
+            <br /><br />
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

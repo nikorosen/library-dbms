@@ -14,6 +14,25 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
+<script type="text/javascript">
+    function displaySelect(optionSelect) {
+
+        if (optionSelect.value == "employee") {
+            document.getElementById("departmentSelect").style.display = "none";
+            document.getElementById("employeeSelect").style.display = "block";
+        }
+
+        else if (optionSelect.value == "department") {
+            document.getElementById("departmentSelect").style.display = "block";
+            document.getElementById("employeeSelect").style.display = "none";
+        }
+
+        else {
+            document.getElementById("departmentSelect").style.display = "none";
+            document.getElementById("employeeSelect").style.display = "none";
+        }
+    }
+</script>
 
 
 <body>

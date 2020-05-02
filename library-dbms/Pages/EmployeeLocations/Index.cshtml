@@ -16,6 +16,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeLocation[0].Employee)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeLocation[0].BuildingNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeLocation[0].RoomNum)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -26,9 +32,10 @@
                 @Html.DisplayFor(modelItem => item.Employee.FirstName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.BuildingNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNum)
             </td>
         </tr>
 }

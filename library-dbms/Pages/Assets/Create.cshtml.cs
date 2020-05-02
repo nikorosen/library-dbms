@@ -38,8 +38,8 @@ namespace library_dbms.Pages.Assets
 
         [BindProperty]
         public Asset Asset { get; set; }
-        [BindProperty]
-        public AssetLocation AssetLocation { get; set; }
+        //[BindProperty]
+        //public AssetLocation AssetLocation { get; set; }
         
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
@@ -53,14 +53,15 @@ namespace library_dbms.Pages.Assets
                 return Page();
             }
 
-            AssetLocation.AssetId = Asset.AssetId;
+            //int AssetId = Asset.AssetId;
 
             _context.Asset.Add(Asset);
             await _context.SaveChangesAsync();
-            _context.AssetLocation.Add(AssetLocation);
-            await _context.SaveChangesAsync();
+            
+            //_context.AssetLocation.Add(AssetLocation);
+            //await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../AssetLocations/Create", new { id = Asset.AssetId });
         }
     }
 }
