@@ -19,11 +19,27 @@ namespace library_dbms.Pages.Employees
         }
 
         public IList<Employee> Employee { get;set; }
+        
+        [BindProperty(SupportsGet = true)]
+        public string SearchFirstName{ get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchLastName { get; set; }
 
         public async Task OnGetAsync()
         {
-            Employee = await _context.Employee
-                .Include(e => e.DepartmentNumNavigation).ToListAsync();
+
+            var employees = from a in _context.Employee select a;
+
+            if (!string.IsNullOrEmpty(SearchFirstName))
+            {
+                employees = employees.Where(x => x.FirstName.Contains(SearchFirstName));
+            }
+            if (!string.IsNullOrEmpty(SearchLastName))
+            {
+                employees = employees.Where(x => x.LastName.Contains(SearchLastName));
+            }
+
+            Employee = await employees.ToListAsync();
         }
     }
 }

@@ -53,7 +53,7 @@ namespace library_dbms.Pages.MaintenanceLogs
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../Assets/AddLog", new { id = MaintenanceLog.AssetId });
         }
     }
 }

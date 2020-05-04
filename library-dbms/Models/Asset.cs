@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace library_dbms.Models
 {
@@ -27,6 +28,10 @@ namespace library_dbms.Models
         [DisplayName("Serial Num")]
         public string SerialNum { get; set; }
         
+        //[Timestamp]
+        //public byte[] RowVersion { get; set; }
+
+
         [DisplayName("Location")]
         public virtual AssetLocation AssetLocation { get; set; }
         public virtual AssignedToDep AssignedToDep { get; set; }

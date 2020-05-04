@@ -8,8 +8,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using library_dbms.Models;
 
+// TODO:
+// - employee assignment update is broken
+// - need to handle deletion for assignment to employee/department entities if trying to make the asset unassigned
+
 namespace library_dbms.Pages.Assets
 {
+
+
     public class EditModel : PageModel
     {
         private readonly library_dbms.Models.InventoryContext _context;
@@ -23,10 +29,13 @@ namespace library_dbms.Pages.Assets
         public Asset Asset { get; set; }
         [BindProperty]
         public AssetLocation AssetLocation { get; set; }
+        
         [BindProperty]
-        public AssignedToDep AssignedToDep { get; set; }
-        [BindProperty]
-        public AssignedToEmp AssignedToEmp { get; set; }
+        public AssignedTo AssignedTo { get; set; }
+        //[BindProperty]
+        //public AssignedToDep AssignedToDep { get; set; }
+        //[BindProperty]
+        //public AssignedToEmp AssignedToEmp { get; set; }
         [BindProperty]
         public SuppliedBy SuppliedBy { get; set; }
 
@@ -37,9 +46,6 @@ namespace library_dbms.Pages.Assets
                 return NotFound();
             }
 
-            ViewData["DepartmentNum"] = new SelectList(_context.Department, "DepartmentNum", "DepartmentName");
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "FirstName");
-
             Asset = await _context.Asset
                 .Include(u => u.AssetLocation)
                 .Include(u => u.AssignedToEmp)
@@ -48,31 +54,68 @@ namespace library_dbms.Pages.Assets
                 .Include(u => u.AssignedToDep.DepartmentNumNavigation)
                 .FirstOrDefaultAsync(m => m.AssetId == id);
 
+            AssetLocation = await _context.AssetLocation
+                .Include(a => a.Asset).FirstOrDefaultAsync(m => m.AssetId == id);
+
+            AssignedTo = new AssignedTo();
+
+            if (_context.AssignedToDep.Any(u => u.AssetId == Asset.AssetId))
+            {
+                AssignedTo.AssignedToDep = await _context.AssignedToDep
+                .Include(a => a.Asset)
+                .Include(a => a.DepartmentNumNavigation).FirstOrDefaultAsync(m => m.AssetId == id);
+            }
+
+            if (_context.AssignedToEmp.Any(u => u.AssetId == Asset.AssetId)) 
+            {
+                AssignedTo.AssignedToEmp = await _context.AssignedToEmp
+                    .Include(a => a.Asset)
+                    .Include(a => a.Employee).FirstOrDefaultAsync(m => m.AssetId == id);
+            }
+
+            SuppliedBy = await _context.SuppliedBy.FirstOrDefaultAsync(m => m.AssetId == id);
+
             if (Asset == null)
             {
                 return NotFound();
             }
+            if (AssetLocation == null)
+            {
+                return NotFound();
+            }
+            if (AssignedTo == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["AssetId"] = new SelectList(_context.Asset, "AssetId", "AssetId");
+            ViewData["DepartmentNum"] = new SelectList(_context.Department, "DepartmentNum", "DepartmentName");
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "FirstName");
+
             return Page();
         }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            int assetId = Asset.AssetId;
+            _context.Entry(Asset).State = EntityState.Modified;
+            _context.Entry(AssetLocation).State = EntityState.Modified;
+            _context.Entry(SuppliedBy).State = EntityState.Modified;
 
-            SuppliedBy.AssetId = assetId;
-            AssetLocation.AssetId = assetId;
-            AssignedToEmp.AssetId = assetId;
-            AssignedToDep.AssetId = assetId;
-
-            _context.Attach(Asset).State = EntityState.Modified;
-            
+            if (AssignedTo.AssignedToEmp != null){
+                _context.Entry(AssignedTo.AssignedToEmp).State = EntityState.Modified;
+            }
+            else if (AssignedTo.AssignedToDep != null)
+            {
+                _context.Entry(AssignedTo.AssignedToDep).State = EntityState.Modified;
+            }
 
             try
             {
@@ -84,32 +127,15 @@ namespace library_dbms.Pages.Assets
                 {
                     return NotFound();
                 }
-                else
+                if (!AssetLocationExists(AssetLocation.AssetId))
                 {
-                    throw;
+                    return NotFound();
                 }
-            }
-
-            ///
-            // Asset editing is a WIP. Throws error when trying to update foreign key values on the same page
-            // as asset editing. I believe this is because the EntityState can't be modified before it's saved 
-            // and/or posted. For now, I've kept the editing fields in the cshtml, 
-            // but they'll only work for asset attributes
-            ///
-
-            /*
-            _context.Attach(AssetLocation).State = EntityState.Modified;
-            _context.Attach(SuppliedBy).State = EntityState.Modified;
-            _context.Attach(AssignedToDep).State = EntityState.Modified;
-            _context.Attach(AssignedToEmp).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AssetExists(Asset.AssetId))
+                if (!SuppliedByExists(SuppliedBy.AssetId))
+                {
+                    return NotFound();
+                }
+                if (!AssignedToDepExists(Asset.AssetId) && !AssignedToEmpExists(Asset.AssetId))
                 {
                     return NotFound();
                 }
@@ -118,7 +144,6 @@ namespace library_dbms.Pages.Assets
                     throw;
                 }
             }
-            */
 
             return RedirectToPage("./Index");
         }
@@ -127,5 +152,32 @@ namespace library_dbms.Pages.Assets
         {
             return _context.Asset.Any(e => e.AssetId == id);
         }
+        private bool AssetLocationExists(int id)
+        {
+            return _context.AssetLocation.Any(e => e.AssetId == id);
+        }
+        private bool AssignedToDepExists(int id)
+        {
+            return _context.AssignedToDep.Any(e => e.AssetId == id);
+        }
+        private bool AssignedToEmpExists(int id)
+        {
+            return _context.AssignedToEmp.Any(e => e.AssetId == id);
+        }
+        private bool SuppliedByExists(int id)
+        {
+            return _context.SuppliedBy.Any(e => e.AssetId == id);
+        }
+        
+        /*
+        private bool AssignedToExists(int id)
+        {
+            if (AssignedTo is AssignedToDep)
+                return (_context.AssignedToDep.Any(e => e.AssetId == id));
+            else if (AssignedTo is AssignedToEmp)
+                return (_context.AssignedToEmp.Any(e => e.AssetId == id));
+            else
+                return false;
+        }*/
     }
 }

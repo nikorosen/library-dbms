@@ -1,0 +1,83 @@
+﻿@page
+@model library_dbms.Pages.MaintenanceLogs.AddLogModel
+
+@{
+    ViewData["Title"] = "Add Log";
+}
+<h1>@Html.DisplayFor(model => model.Asset.Name)</h1>
+<h1>@Html.DisplayFor(model => model.Asset.ModelNum)</h1>
+
+<h4>Maintenance Log</h4>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaintenanceLogList[0].DatePerformed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaintenanceLogList[0].HoursLogged)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaintenanceLogList[0].Description)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.MaintenanceLogList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePerformed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoursLogged)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-page="../MaintenanceLogs/Edit" asp-route-id="@item.LogId">Edit</a> <br />
+                    <a asp-page="../MaintenanceLogs/Delete" asp-route-id="@item.LogId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaintenanceLog.DatePerformed" class="control-label"></label>
+                <input asp-for="MaintenanceLog.DatePerformed" class="form-control" />
+                <span asp-validation-for="MaintenanceLog.DatePerformed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaintenanceLog.HoursLogged" class="control-label"></label>
+                <input asp-for="MaintenanceLog.HoursLogged" class="form-control" />
+                <span asp-validation-for="MaintenanceLog.HoursLogged" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaintenanceLog.Description" class="control-label"></label>
+                <input asp-for="MaintenanceLog.Description" class="form-control" />
+                <span asp-validation-for="MaintenanceLog.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Log" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

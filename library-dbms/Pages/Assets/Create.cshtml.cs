@@ -57,11 +57,12 @@ namespace library_dbms.Pages.Assets
 
             _context.Asset.Add(Asset);
             await _context.SaveChangesAsync();
-            
+
             //_context.AssetLocation.Add(AssetLocation);
             //await _context.SaveChangesAsync();
 
-            return RedirectToPage("../AssetLocations/Create", new { id = Asset.AssetId });
+            return RedirectToPage("./_Create", new { id = Asset.AssetId });
+            //return RedirectToPage("../AssetLocations/Create", new { id = Asset.AssetId });
         }
     }
 }

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
+// TODO:
+// this model should reference Vendor model somehow, but doesnt
+// this should be fixed, but make a repo backup before messing with it
+
 namespace library_dbms.Models
 {
     public partial class SuppliedBy

@@ -55,6 +55,9 @@
                 <span asp-validation-for="Asset.SerialNum" class="text-danger"></span>
             </div>
 
+            <br /><h4>Vendor: </h4> <br />
+
+            <input type="hidden" asp-for="SuppliedBy.AssetId" />
             <div class="form-group">
                 <label asp-for="SuppliedBy.VendorId" class="control-label"></label>
                 <input asp-for="SuppliedBy.VendorId" class="form-control" />
@@ -71,8 +74,9 @@
                 <span asp-validation-for="SuppliedBy.PurchaseDate" class="text-danger"></span>
             </div>
 
-            <br /><h4> Asset location: </h4> <br />
+            <br /><h4>Asset Location: </h4> <br />
 
+            <input type="hidden" asp-for="AssetLocation.AssetId" />
             <div class="form-group">
                 <label asp-for="AssetLocation.BuildingNum" class="control-label"></label>
                 <input asp-for="AssetLocation.BuildingNum" class="form-control" />
@@ -89,25 +93,33 @@
                 <span asp-validation-for="AssetLocation.Notes" class="text-danger"></span>
             </div>
 
-            <br /><h4>Update assigned employee or department? </h4> <br />
+            <br /><h4>Update asset ownership: </h4> <br />
 
             <select id="assign-to" name="assign-to" onchange="displaySelect(this);">
                 <option value="no">No</option>
                 <option value="employee">Employee</option>
                 <option value="department">Department</option>
+                <option value="assigned">Assigned</option>
             </select>
 
+            <!-- For now, this doesnt work
             <div id="employeeSelect" style="display:none">
                 <br />
+                <input type="hidden" asp-for="AssignedTo.AssignedToEmp.AssetId" />
                 <div class="form-group">
-                    <select asp-for="AssignedToEmp.EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                    <label asp-for="AssignedTo.AssignedToEmp.EmployeeId" class="control-label"></label>
+                    <select asp-for="AssignedTo.AssignedToEmp.EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                    <span asp-validation-for="AssignedTo.AssignedToEmp.EmployeeId" class="text-danger"></span>
                 </div>
-            </div>
+            </div> -->
 
             <div id="departmentSelect" style="display:none">
                 <br />
+                <input type="hidden" asp-for="AssignedTo.AssignedToDep.AssetId" />
                 <div class="form-group">
-                    <select asp-for="AssignedToDep.DepartmentNum" class="form-control" asp-items="ViewBag.DepartmentNum"></select>
+                    <label asp-for="AssignedTo.AssignedToDep.DepartmentNum" class="control-label"></label>
+                    <select asp-for="AssignedTo.AssignedToDep.DepartmentNum" class="form-control" asp-items="ViewBag.DepartmentNum"></select>
+                    <span asp-validation-for="AssignedTo.AssignedToDep.DepartmentNum" class="text-danger"></span>
                 </div>
             </div>
 

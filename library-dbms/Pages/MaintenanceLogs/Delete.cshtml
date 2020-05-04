@@ -41,6 +41,6 @@
     <form method="post">
         <input type="hidden" asp-for="MaintenanceLog.LogId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-page="../Assets/AddLog" asp-route-id="MaintenanceLog.AssetId">Back to List</a>
     </form>
 </div>

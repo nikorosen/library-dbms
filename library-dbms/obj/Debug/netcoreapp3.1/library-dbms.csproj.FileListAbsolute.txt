@@ -240,3 +240,5 @@ C:\Users\Nick\source\repos\library-dbms\library-dbms\obj\Debug\netcoreapp3.1\Raz
 C:\Users\Nick\source\repos\library-dbms\library-dbms\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedToEmps\Details.cshtml.g.cs
 C:\Users\Nick\source\repos\library-dbms\library-dbms\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedToEmps\Edit.cshtml.g.cs
 C:\Users\Nick\source\repos\library-dbms\library-dbms\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedToEmps\Index.cshtml.g.cs
+C:\Users\Nick\source\repos\library-dbms\library-dbms\obj\Debug\netcoreapp3.1\Razor\Pages\Assets\_Create.cshtml.g.cs
+C:\Users\Nick\source\repos\library-dbms\library-dbms\obj\Debug\netcoreapp3.1\Razor\Pages\Assets\AddLog.cshtml.g.cs

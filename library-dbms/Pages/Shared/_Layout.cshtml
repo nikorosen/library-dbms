@@ -32,6 +32,39 @@
             document.getElementById("employeeSelect").style.display = "none";
         }
     }
+
+    /*function _displaySelect(optionSelect) {
+
+        if (optionSelect.value == "department") {
+
+            var elt = document.getElementById("assigned-to-select");
+
+            if (elt) {
+                var newHTML = "<br />" +
+                    "<input type="hidden" asp-for="AssignedTo.AssignedToDep.AssetId" />" +
+                        "<div class="form - group">" +
+                            "<label asp-for="AssignedTo.AssignedToDep.DepartmentNum" class="control - label"></label>" +
+                                "<select asp-for="AssignedTo.AssignedToDep.DepartmentNum" class="form - control" asp-items="ViewBag.DepartmentNum"></select>" +
+                                    "<span asp-validation-for="AssignedTo.AssignedToDep.DepartmentNum" class="text - danger"></span>" +
+                    "</div>";
+
+                elt.innerHTML = newHTML;
+            }
+            
+            document.getElementById("departmentSelect").style.display = "none";
+            document.getElementById("employeeSelect").style.display = "block";
+        }
+
+        else if (optionSelect.value == "department") {
+            document.getElementById("departmentSelect").style.display = "block";
+            document.getElementById("employeeSelect").style.display = "none";
+        }
+
+        else {
+            document.getElementById("departmentSelect").style.display = "none";
+            document.getElementById("employeeSelect").style.display = "none";
+        }
+    }*/
 </script>
 
 
