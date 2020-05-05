@@ -49,9 +49,9 @@ namespace library_dbms.Pages.Assets
             if (Asset != null)
             {
                 _context.Asset.Remove(Asset);
-                await _context.SaveChangesAsync();
             }
 
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
     }

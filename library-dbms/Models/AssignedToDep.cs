@@ -9,7 +9,7 @@ namespace library_dbms.Models
     {
         public int AssetId { get; set; }
         
-        [DisplayName("Department #")]
+        [DisplayName("Department Num")]
         public int DepartmentNum { get; set; }
 
         public virtual Asset Asset { get; set; }

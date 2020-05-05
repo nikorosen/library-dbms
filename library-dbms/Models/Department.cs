@@ -17,7 +17,7 @@ namespace library_dbms.Models
         public int DepartmentNum { get; set; }
         [DisplayName("Department Name")]
         public string DepartmentName { get; set; }
-        [DisplayName("Phone #")]
+        [DisplayName("Phone Num")]
         public string PhoneNum { get; set; }
 
         public virtual ICollection<AssignedToDep> AssignedToDep { get; set; }

@@ -7,30 +7,43 @@
 
 <h1>Index</h1>
 
-<p>
+<!-- <p>
     <a asp-page="Create">Create New</a>
-</p>
+</p>-->
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.DepartmentLocation[0].DepartmentNumNavigation)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentLocation[0].BuildingNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentLocation[0].RoomNum)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.DepartmentLocation) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartmentNumNavigation.DepartmentName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.DepartmentLocation)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentNumNavigation.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuildingNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomNum)
+                </td>
+                <!-- <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td> -->
+            </tr>
+        }
     </tbody>
 </table>
