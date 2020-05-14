@@ -19,11 +19,19 @@ namespace library_dbms.Pages.Assets
             _context = context;
         }
 
-        public IList<Asset> Asset { get;set; }
-       
+        public IList<Asset> Asset { get; set; }
+
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
-        
+
+        public SelectList SerialNum { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SerialString { get; set; }
+
+        public SelectList Notes { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string NotesString { get; set; }
+
         public SelectList Categories { get; set; }
         [BindProperty(SupportsGet = true)]
         public string AssetCategory { get; set; }
@@ -50,12 +58,24 @@ namespace library_dbms.Pages.Assets
             var assets = from a in _context.Asset
                 .Include(u => u.AssetLocation)
                 .Include(u => u.AssignedToDep)
-                .Include(u => u.AssignedToEmp) select a;
-         
-            if (!string.IsNullOrEmpty(SearchString))         {
+                .Include(u => u.AssignedToEmp)
+                         select a;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
                 assets = assets.Where(x => x.Name.Contains(SearchString));
             }
-         
+
+            if (!string.IsNullOrEmpty(SerialString))
+            {
+                assets = assets.Where(x => x.SerialNum.Contains(SerialString));
+            }
+
+            if (!string.IsNullOrEmpty(NotesString))
+            {
+                assets = assets.Where(x => x.Notes.Contains(NotesString));
+            }
+
             if (!string.IsNullOrEmpty(AssetCategory))
             {
                 assets = assets.Where(x => x.Category == AssetCategory);
@@ -63,9 +83,9 @@ namespace library_dbms.Pages.Assets
 
             if (!string.IsNullOrEmpty(AssetStatus))
             {
-               assets = assets.Where(x => x.AssetStatus == AssetStatus);
+                assets = assets.Where(x => x.AssetStatus == AssetStatus);
             }
-            
+
             if (!string.IsNullOrEmpty(AssetManufacturer))
             {
                 assets = assets.Where(x => x.Manufacturer == AssetManufacturer);

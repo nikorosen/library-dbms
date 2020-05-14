@@ -14,20 +14,20 @@ namespace library_dbms.Models
 
         public int AssetId { get; set; }
         public string Category { get; set; }
-        
-        [DisplayName("Barcode Num")]
+
+        [DisplayName("Barcode Number")]
         public string BarcodeNum { get; set; }
         public string Manufacturer { get; set; }
 
-        [DisplayName("Model Num")]
+        [DisplayName("Model Number")]
         public string ModelNum { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
         [DisplayName("Status")]
         public string AssetStatus { get; set; }
-        [DisplayName("Serial Num")]
+        [DisplayName("Serial Number")]
         public string SerialNum { get; set; }
-        
+
         //[Timestamp]
         //public byte[] RowVersion { get; set; }
 
@@ -45,7 +45,7 @@ namespace library_dbms.Models
     public class AssetSearchModel
     {
         public string Barcode { get; set; }
-        public string Manufacturer { get; set;}
+        public string Manufacturer { get; set; }
         public string ModelNum { get; set; }
         public string Name { get; set; }
         public string SerialNum { get; set; }

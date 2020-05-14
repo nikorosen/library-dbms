@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nick\\source\\repos\\library-dbms\\library-dbms\\library-dbms.csproj": {}
+    "C:\\Users\\uhhlibit.SPRINGFIELD\\source\\repos\\library-dbms\\library-dbms\\library-dbms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nick\\source\\repos\\library-dbms\\library-dbms\\library-dbms.csproj": {
+    "C:\\Users\\uhhlibit.SPRINGFIELD\\source\\repos\\library-dbms\\library-dbms\\library-dbms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nick\\source\\repos\\library-dbms\\library-dbms\\library-dbms.csproj",
+        "projectUniqueName": "C:\\Users\\uhhlibit.SPRINGFIELD\\source\\repos\\library-dbms\\library-dbms\\library-dbms.csproj",
         "projectName": "library-dbms",
-        "projectPath": "C:\\Users\\Nick\\source\\repos\\library-dbms\\library-dbms\\library-dbms.csproj",
-        "packagesPath": "C:\\Users\\Nick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nick\\source\\repos\\library-dbms\\library-dbms\\obj\\",
+        "projectPath": "C:\\Users\\uhhlibit.SPRINGFIELD\\source\\repos\\library-dbms\\library-dbms\\library-dbms.csproj",
+        "packagesPath": "C:\\Users\\uhhlibit.SPRINGFIELD\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\uhhlibit.SPRINGFIELD\\source\\repos\\library-dbms\\library-dbms\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Nick\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\uhhlibit.SPRINGFIELD\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
